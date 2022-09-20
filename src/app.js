@@ -1,13 +1,13 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import router from './routes/index.js';
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import router from "./routes/index.js";
 // import session from 'express-session';
 // import redis from 'redis';
-import passport from 'passport';
-import passportConfig from './passport/index.js';
+import passport from "passport";
+import passportConfig from "./passport/index.js";
 // import connectRedis from 'connect-redis';
-import morgan from 'morgan';
+import morgan from "morgan";
 
 // let RedisStore = connectRedis(session);
 const app = express();
@@ -37,28 +37,28 @@ passportConfig();
 // }
 
 let corsOption = {
-  origin: '*',
+  origin: "*",
 };
 
 app.use(cors(corsOption));
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 // app.use(session(sessionOption));
 app.use(passport.initialize());
 app.use(passport.session());
 
-import { sequelize } from './models/index.js';
+import { sequelize } from "./models/index.js";
 
-app.set('port', process.env.PORT || 5000);
+app.set("port", process.env.PORT || 5000);
 
 sequelize
   .sync({ alter: false })
-  .then(() => console.log('db connect'))
+  .then(() => console.log("db connect"))
   .catch((err) => console.error(err));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api', router);
+app.use("/api", router);
 
 app.use((req, res, next) => {
   const error = new Error(
@@ -75,4 +75,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(app.get('port'), () => console.log('서버 ON'));
+//app.listen(app.get('port'), () => console.log('서버 ON'));
