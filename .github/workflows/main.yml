@@ -11,27 +11,18 @@ jobs:
         node-version: [16.x]
 
     steps:
-      #- uses: actions/checkout@v3
-      - run: |
-          ls -al
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: create env
+        run: |
           pwd
-          echo hi
-
-      # - name: Use Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-
-      # - name: create env
-      #   run: |
-      #     pwd
-      #     touch .env
-      #     echo  ${{secrets.ENV}} >> .env
-      #     ls -al
-      #     cd ./src
-      #     ls -al
-
-      # - name: build server files
-      #   working-directory: ./
-      #   run: |
-      #     npm i nodemon
+          touch .env
+          echo  ${{secrets.ENV}} >> .env
+          ls -al
+          cd ./src
+          ls -al
