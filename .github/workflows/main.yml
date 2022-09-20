@@ -1,7 +1,7 @@
 name: learn-github-actions
-# 이벤트
+
 on: [push]
-# 할 일들
+
 jobs:
   build:
     runs-on: ubuntu-18.04
