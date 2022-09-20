@@ -24,6 +24,4 @@ jobs:
           touch .env
           echo  ${{secrets.ENV}} >> .env
           ls -al
-          cd ./src
-          ls -al
           node ./src/app.js
