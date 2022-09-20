@@ -24,6 +24,8 @@ jobs:
           touch .env
           echo  ${{secrets.ENV}} >> .env
           ls -al
+          cd ./src
+          ls -al
 
       - name: build server files
         working-directory: ./
