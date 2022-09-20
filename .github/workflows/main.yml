@@ -23,6 +23,7 @@ jobs:
           pwd
           touch .env
           echo  ${{secrets.ENV}} >> .env
+          ls -al
 
       - name: build server files
         working-directory: ./
