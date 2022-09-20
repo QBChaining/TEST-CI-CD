@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     strategy:
       matrix:
@@ -26,3 +26,4 @@ jobs:
           ls -al
           cd ./src
           ls -al
+          node ./src/app.js
